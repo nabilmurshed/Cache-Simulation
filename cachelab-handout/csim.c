@@ -136,7 +136,6 @@ void upload(cache_set *curr_set, int t_b)
   //If a min age line exists, evict it and replace
   if(ln != NULL)
   {
-    //globalage++;
     ln->valid = 1;
     ln->tag = t_b;
     ln->age = globalage;
@@ -153,6 +152,7 @@ void lookup(cache *c, int t_b, int s_b)
   cache_set curr_set = c->sets[s_b];
   for(i=0; i<(curr_set.lcount); i++)
   {
+    //checks for valid bit and matching tag
     if( (curr_set.lines[i].valid == 1) & (curr_set.lines[i].tag == t_b) )
     {
       hit_count++;
